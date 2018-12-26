@@ -28,9 +28,9 @@ Namespace BlockSelection
 			Me.components = New System.ComponentModel.Container()
 			Me.treeList1 = New DevExpress.XtraTreeList.TreeList()
 			Me.table1BindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
-			Me.treeListDataBaseDataSet = New BlockSelection.TreeListDataBaseDataSet()
-			Me.table1TableAdapter1 = New BlockSelection.TreeListDataBaseDataSetTableAdapters.Table1TableAdapter()
-			Me.colName = New DevExpress.XtraTreeList.Columns.TreeListColumn()
+            Me.treeListDataBaseDataSet = New TreeListDataBaseDataSet()
+            Me.table1TableAdapter1 = New TreeListDataBaseDataSetTableAdapters.Table1TableAdapter()
+            Me.colName = New DevExpress.XtraTreeList.Columns.TreeListColumn()
 			Me.colPriority = New DevExpress.XtraTreeList.Columns.TreeListColumn()
 			CType(Me.treeList1, System.ComponentModel.ISupportInitialize).BeginInit()
 			CType(Me.table1BindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -105,8 +105,8 @@ Namespace BlockSelection
 		Private WithEvents treeList1 As DevExpress.XtraTreeList.TreeList
 		Private treeListDataBaseDataSet As TreeListDataBaseDataSet
 		Private table1BindingSource1 As System.Windows.Forms.BindingSource
-		Private table1TableAdapter1 As BlockSelection.TreeListDataBaseDataSetTableAdapters.Table1TableAdapter
-		Private colName As DevExpress.XtraTreeList.Columns.TreeListColumn
+        Private table1TableAdapter1 As TreeListDataBaseDataSetTableAdapters.Table1TableAdapter
+        Private colName As DevExpress.XtraTreeList.Columns.TreeListColumn
 		Private colPriority As DevExpress.XtraTreeList.Columns.TreeListColumn
 	End Class
 End Namespace
