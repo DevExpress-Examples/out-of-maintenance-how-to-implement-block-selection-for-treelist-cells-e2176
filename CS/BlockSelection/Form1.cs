@@ -30,11 +30,62 @@ namespace BlockSelection
                 }
         }
 
+        DataTable CreateTable()
+        {
+            DataTable table = new DataTable();
+            DataRow dataRow;
+            table.Columns.Add("ID", typeof(System.Int32));
+            table.Columns.Add("ID_2", typeof(System.Int32));
+            table.Columns.Add("Name", typeof(System.String));
+            table.Columns.Add("Priority", typeof(System.String));
+            dataRow = table.NewRow();
+            dataRow["ID"] = 1;
+            dataRow["ID_2"] = 0;
+            dataRow["Name"] = "Project A";
+            dataRow["Priority"] = "High";
+            table.Rows.Add(dataRow);
+
+            dataRow = table.NewRow();
+            dataRow["ID"] = 2;
+            dataRow["ID_2"] = 1;
+            dataRow["Name"] = "Deliverable 1";
+            dataRow["Priority"] = "Normal";
+            table.Rows.Add(dataRow);
+
+            dataRow = table.NewRow();
+            dataRow["ID"] = 3;
+            dataRow["ID_2"] = 2;
+            dataRow["Name"] = "This task is mine A";
+            dataRow["Priority"] = "High";
+            table.Rows.Add(dataRow);
+
+            dataRow = table.NewRow();
+            dataRow["ID"] = 4;
+            dataRow["ID_2"] = 2;
+            dataRow["Name"] = "This task isn't mine";
+            dataRow["Priority"] = "Low";
+            table.Rows.Add(dataRow);
+
+            dataRow = table.NewRow();
+            dataRow["ID"] = 5;
+            dataRow["ID_2"] = 0;
+            dataRow["Name"] = "Project B";
+            dataRow["Priority"] = "Normal";
+            table.Rows.Add(dataRow);
+
+            dataRow = table.NewRow();
+            dataRow["ID"] = 6;
+            dataRow["ID_2"] = 5;
+            dataRow["Name"] = "This task is mine B";
+            dataRow["Priority"] = "High";
+            table.Rows.Add(dataRow);
+
+            return table;
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
-            // TODO: This line of code loads data into the 'treeListDataBaseDataSet.Table1' table. You can move, or remove it, as needed.
-            this.table1TableAdapter1.Fill(this.treeListDataBaseDataSet.Table1);
-
+            treeList1.DataSource = CreateTable();
         }
     }
 }

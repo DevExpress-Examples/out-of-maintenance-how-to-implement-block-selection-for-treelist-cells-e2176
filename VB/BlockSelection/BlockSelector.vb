@@ -1,5 +1,4 @@
-﻿Imports Microsoft.VisualBasic
-Imports System
+﻿Imports System
 Imports System.Collections.Generic
 Imports System.Linq
 Imports System.Text
@@ -54,7 +53,7 @@ Namespace BlockSelection
 			fBlock.X1 = 0
 			fBlock.X2 = fList.VisibleColumns.Count - 1
 			fBlock.Y2 = node.Id
-			If fBlock.Modified AndAlso (Not fBlock.IsEmpty()) Then
+			If fBlock.Modified AndAlso Not fBlock.IsEmpty() Then
 				InvalidateBlock()
 			End If
 		End Sub
@@ -76,7 +75,7 @@ Namespace BlockSelection
 				End If
 				If hInfo.HitInfoType = HitInfoType.Cell OrElse hInfo.HitInfoType = HitInfoType.RowIndicator Then
 					fBlock.Y2 = hInfo.Node.Id
-					If fBlock.Modified AndAlso (Not fBlock.IsEmpty()) Then
+					If fBlock.Modified AndAlso Not fBlock.IsEmpty() Then
 						InvalidateBlock()
 					End If
 				End If
@@ -114,7 +113,7 @@ Namespace BlockSelection
 
 		Public Function GetSelectedValues() As String
 			Dim result As String = String.Empty
-			If (Not fBlock.IsEmpty()) Then
+			If Not fBlock.IsEmpty() Then
 				Dim operation As New SelectionOperation(fBlock)
 				fList.NodesIterator.DoOperation(operation)
 				result = operation.Result
@@ -202,10 +201,12 @@ Namespace BlockSelection
 
 	Public Class SelectionOperation
 		Inherits TreeListOperation
+
 		Private block As Block
+'INSTANT VB NOTE: The field result was renamed since Visual Basic does not allow fields to have the same name as other class members:
 		Private result_Renamed As String = String.Empty
-		Private Const CellDelimeter As String = Constants.vbTab
-		Private Const LineDelimeter As String = Constants.vbCrLf
+		Private Const CellDelimeter As String = vbTab
+		Private Const LineDelimeter As String = vbCrLf
 
 		Public Sub New(ByVal block As Block)
 			Me.block = block
@@ -218,7 +219,7 @@ Namespace BlockSelection
 		End Property
 
 		Public Overrides Sub Execute(ByVal node As DevExpress.XtraTreeList.Nodes.TreeListNode)
-			If (Not block.Between(block.Y1, block.Y2, node.Id)) Then
+			If Not block.Between(block.Y1, block.Y2, node.Id) Then
 				Return
 			End If
 			For Each column As TreeListColumn In node.TreeList.Columns
